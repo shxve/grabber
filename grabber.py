@@ -5,6 +5,7 @@
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
+import keyboard
 
 
 url = "https://iplogger.org/logger/cC8J3N1wqeo1"
@@ -14,11 +15,9 @@ def main():
     # code
 
     myips = {}
-    mydevices = {}
-    mytimes = {}
-    
-    for x in range(0, 3):
-        sleep(1)
+
+    while True:
+        sleep(0.5)
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
 
@@ -45,16 +44,10 @@ def main():
             temp_list.append(date)
             temp_list.append(time)
 
-            """myips[ip] = isp
-            mydevices[device] = browser
-            mytimes[time] = date"""
-
             myips[i] = temp_list
-    
+
     print(myips)
-    #print(mydevices)
-    #print(mytimes)
-    
+
     return 0
 
 
