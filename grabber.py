@@ -30,19 +30,30 @@ def main():
         temp_times = soup.find_all(attrs={"class": "ip-time"})
 
         for i in range(len(temp_ips)):
+            temp_list = []
             ip = temp_ips[i].text.strip()
             isp = temp_isps[i].text.strip()
             device = temp_devices[i].text.strip()
             browser = temp_browsers[i].text.strip()
             date = temp_dates[i].text.strip()
             time = temp_times[i].text.strip()
-            myips[ip] = isp
+
+            temp_list.append(ip)
+            temp_list.append(isp)
+            temp_list.append(device)
+            temp_list.append(browser)
+            temp_list.append(date)
+            temp_list.append(time)
+
+            """myips[ip] = isp
             mydevices[device] = browser
-            mytimes[time] = date
+            mytimes[time] = date"""
+
+            myips[i] = temp_list
     
     print(myips)
-    print(mydevices)
-    print(mytimes)
+    #print(mydevices)
+    #print(mytimes)
     
     return 0
 
